@@ -11,6 +11,33 @@
         <div class="p-6 text-gray-900 dark:text-gray-100">
           <p class="mb-4">Olá <b>{{ Auth::user()->name }}</b></p>
         </div>
+        <div class="p-6 text-gray-900 dark:text-gray-100">
+
+          <div class="p3 bg-gray100 rounded-lg mb4">
+            {{ $users->links() }}
+          </div>
+
+          <table class="table-auto w-full">
+            <thead class="text-left bg-gray-100 dark:text-gray-900">
+              <tr>
+                <th class="text-center">Nível</th>
+                <th class="p-4">Nome</th>
+                <th>E-mail</th>
+                <th class="p-2 text-center">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ( $users as $user )
+              <tr>
+                <td class="text-center">ícone</td>
+                <td class="p-4">{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td class="p-2 text-center">Editar</td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
