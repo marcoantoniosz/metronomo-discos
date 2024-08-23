@@ -29,10 +29,18 @@
             <tbody>
               @foreach ( $users as $user )
               <tr>
-                <td class="text-center">ícone</td>
+                <td class="text-center">
+                  @if ( $user->role == 'admin' )
+                  <i class="fa-solid fa-crown"></i>
+                  @else
+                  <i class="fa-solid fa-user"></i>
+                  @endif
+                </td>
                 <td class="p-4">{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td class="p-2 text-center">Editar</td>
+                <td class="p-2 text-center">
+                  <a href="{{ route('user.edit', $user->id) }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</a>
+                </td>
               </tr>
               @endforeach
             </tbody>

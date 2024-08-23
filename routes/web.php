@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
     //Users
 
     Route::get(uri: '/users-index', action: [UserController::class, 'index'])->name('users.index');
+
+    Route::get(uri: '/user-edit/{id}', action: [UserController::class, 'editAcess'])->name('user.edit');
+    Route::put(uri: '/user-update-role/{id}', action: [UserController::class, 'updateRole'])->name('user.update');
 });
 
 require __DIR__ . '/auth.php';
