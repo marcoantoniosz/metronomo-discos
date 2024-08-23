@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Auth\Access\Gate;
+use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,10 +20,10 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(Gate $gate): void
+    public function boot(): void
     {
         Schema::defaultStringLength(191);
-        $gate->define('role', function ($user) {
+        Gate::define('role', function (User $user) {
             return $user->role === 'admin';
         });
     }
